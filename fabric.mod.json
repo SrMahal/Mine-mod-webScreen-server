@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "webscreen",
+	"version": "1.0.9",
+	"name": "WebScreen",
+	"description": "Renders a real Chromium web browser on a screen block inside Minecraft — click links, type, scroll, build multi-block screen walls, and browse together in multiplayer.",
+	"authors": [
+		"wiliel"
+	],
+	"contact": {
+		"sources": "https://github.com/wiliel-maker"
+	},
+	"license": "MIT",
+	"icon": "assets/webscreen/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"preLaunch": [
+			"com.example.WebScreenPreLaunch"
+		],
+		"main": [
+			"com.example.ExampleMod"
+		],
+		"client": [
+			"com.example.client.ExampleModClient"
+		]
+	},
+	"mixins": [
+		"webscreen.mixins.json",
+		{
+			"config": "webscreen.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

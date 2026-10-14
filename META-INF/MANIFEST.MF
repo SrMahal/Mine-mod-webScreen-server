@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Fabric-Loom-Client-Only-Entries: com/example/client/CefBootstrap$1.class
+ ;com/example/client/CefBootstrap.class;com/example/client/CefReloadList
+ ener.class;com/example/client/ExampleModClient.class;com/example/client
+ /mixin/ExampleClientMixin.class;com/example/client/ScreenClientNet.clas
+ s;com/example/client/ScreenManager$Screen.class;com/example/client/Scre
+ enManager.class;com/example/client/WebBrowserScreen$RadiusSlider.class;
+ com/example/client/WebBrowserScreen$VolumeSlider.class;com/example/clie
+ nt/WebBrowserScreen.class;com/example/client/WebScreenRenderer.class;co
+ m/example/client/WebScreenRenderState.class;com/example/client/WebTextu
+ re.class;org/cef/browser/HeadlessOsrBrowser$PaintSink.class;org/cef/bro
+ wser/HeadlessOsrBrowser.class;webscreen.client.mixins.json
+Fabric-Loom-Split-Environment: true
+Fabric-Mapping-Namespace: official
+Fabric-Gradle-Version: 9.5.1
+Fabric-Loom-Version: 1.17.13
+Fabric-Mixin-Compile-Extensions-Version: 0.6.0
+Fabric-Minecraft-Version: 26.2
+Fabric-Tiny-Remapper-Version: 0.14.0
+Fabric-Loader-Version: 0.19.3
+Fabric-Mixin-Version: 0.17.3+mixin.0.8.7
+Fabric-Mixin-Group: net.fabricmc
+
