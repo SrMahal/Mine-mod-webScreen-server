@@ -35,7 +35,7 @@ public class ExampleModClient implements ClientModInitializer {
       ClientLifecycleEvents.CLIENT_STOPPING.register((ClientStopping)client -> { PersonalBrowserManager.shutdown(); CefBootstrap.shutdown(); });
       ClientTickEvents.END_CLIENT_TICK.register((EndTick)client -> {
          while (personalBrowserKey.consumeClick()) {
-            if (client.gui.getScreen() == null) client.setScreenAndShow(new PersonalBrowserScreen());
+            if (client.player != null && client.level != null) client.setScreenAndShow(new PersonalBrowserScreen());
          }
          if (tickCounter % 5 == 0) {
             ScreenManager.updateAudio();
