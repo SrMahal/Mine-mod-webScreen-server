@@ -2,9 +2,10 @@ package com.example.client;
 
 import com.example.WebScreenBlocks;
 import com.mojang.blaze3d.platform.InputConstants;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;
+import net.minecraft.resources.Identifier;
 import com.example.WebScreenInput;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -23,7 +24,7 @@ public class ExampleModClient implements ClientModInitializer {
 
    public void onInitializeClient() {
       CefBootstrap.initAsync();
-      personalBrowserKey = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.webscreen.personal", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_C, "key.categories.webscreen"));
+      personalBrowserKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.webscreen.personal", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_C, KeyMapping.Category.register(Identifier.fromNamespaceAndPath("webscreen", "personal"))));
       // Keep the ~350 MB first-run engine download on the startup loading screen
       // instead of letting it race with world loading.
       ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(new CefReloadListener());
@@ -34,7 +35,7 @@ public class ExampleModClient implements ClientModInitializer {
       ClientLifecycleEvents.CLIENT_STOPPING.register((ClientStopping)client -> { PersonalBrowserManager.shutdown(); CefBootstrap.shutdown(); });
       ClientTickEvents.END_CLIENT_TICK.register((EndTick)client -> {
          while (personalBrowserKey.consumeClick()) {
-            if (client.screen == null) client.setScreenAndShow(new PersonalBrowserScreen());
+            if (client.gui.getScreen() == null) client.setScreenAndShow(new PersonalBrowserScreen());
          }
          if (tickCounter % 5 == 0) {
             ScreenManager.updateAudio();
